@@ -10,6 +10,7 @@ import {
 import { Word } from '../word-card/word';
 import { WordResult } from '../word-card/word-card.component';
 import { WordLevel } from '../word-levels/word-level';
+import { WordsService } from '../words.service';
 
 @Component({
   selector: 'app-word-card-container',
@@ -17,38 +18,28 @@ import { WordLevel } from '../word-levels/word-level';
   styleUrls: ['./word-card-container.component.css']
 })
 export class WordCardContainerComponent implements OnInit, OnChanges {
-  words: Word[] = [
-    {
-      title: 'Project Management',
-      description: 'Project Management is a study of managing projects'
-    },
-    {
-      title: 'Agile',
-      description:
-        'Agile is a super cool way working on a project and in a team'
-    },
-    {
-      title: 'Deadline',
-      description: "If you cross this line you're dead"
-    }
-  ];
-  currentWord: Word = this.words.shift();
+  words: Word[] = [];
+  currentWord: Word;
 
   @Input() selectedLevel: WordLevel;
   @Output() levelComplete = new EventEmitter<LevelCompleteEvent>();
 
-  constructor() {}
+  constructor(private wordsService: WordsService) {}
 
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('selectedLevel' in changes) {
-      console.log('Selected level is ', this.selectedLevel);
+      this.wordsService
+        .getWordsByLevel(this.selectedLevel.title)
+        .subscribe(words => {
+          this.words = words;
+          this.currentWord = this.words.shift();
+        });
     }
   }
 
   onAnswerSelected(selectedAnswer: WordResult): void {
-    console.log(this.words);
     if (selectedAnswer.knew) {
       // do something if user knew the word
     } else {

@@ -10,6 +10,7 @@ import { HelloComponent } from './hello.component';
 import { WordCardComponent } from './word-card/word-card.component';
 import { WordCardContainerComponent } from './word-card-container/word-card-container.component';
 import { WordLevelsComponent } from './word-levels/word-levels.component';
+import { WordsService } from './words.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,14 @@ import { WordLevelsComponent } from './word-levels/word-levels.component';
     MatCardModule,
     MatButtonModule
   ],
-  declarations: [AppComponent, HelloComponent, WordCardComponent, WordCardContainerComponent, WordLevelsComponent],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    HelloComponent,
+    WordCardComponent,
+    WordCardContainerComponent,
+    WordLevelsComponent
+  ],
+  bootstrap: [AppComponent],
+  providers: [WordsService]
 })
 export class AppModule {}

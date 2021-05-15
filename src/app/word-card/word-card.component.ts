@@ -37,7 +37,7 @@ export class WordCardComponent implements OnInit, OnChanges {
   }
 
   onWordAction(selectedAnswer: boolean): void {
-    this.answer.emit({word: this.word, knew: selectedAnswer});
+    this.answer.emit({ word: this.word, knew: selectedAnswer });
   }
 }
 

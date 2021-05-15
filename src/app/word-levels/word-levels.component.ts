@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Word } from '../word-card/word';
+import { WordsService } from '../words.service';
 import { WordLevel } from './word-level';
 
 @Component({
@@ -10,24 +11,15 @@ import { WordLevel } from './word-level';
 export class WordLevelsComponent implements OnInit {
   @Output() selectLevel = new EventEmitter<WordLevel>();
 
-  levels: WordLevel[] = [
-    {
-      title: 'easy',
-      description: 'Easy words, perfect for beginners'
-    },
-    {
-      title: 'medium',
-      description: 'For the serious aspirants'
-    },
-    {
-      title: 'hard',
-      description: 'Show your mastery now'
-    }
-  ];
+  levels: WordLevel[] = [];
 
-  constructor() {}
+  constructor(private wordsService: WordsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.wordsService
+      .getWordLevels()
+      .subscribe(levels => (this.levels = levels));
+  }
 
   onCardClick(selectedLevel: WordLevel): void {
     this.selectLevel.emit(selectedLevel);

@@ -12,12 +12,10 @@ export class AppComponent {
   selectedLevel: WordLevel | null = null;
 
   onLevelComplete(event: LevelCompleteEvent): void {
-    console.log('all words are learnt. Go to next level');
     this.levelComplete = true;
   }
 
   onLevelSelect(level: WordLevel): void {
-    console.log(level);
     this.selectedLevel = level;
   }
 
