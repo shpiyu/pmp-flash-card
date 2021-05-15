@@ -33,31 +33,31 @@ export class WordCardContainerComponent implements OnInit, OnChanges {
     private userService: UserService
   ) {}
 
-  ngOnInit() {
-    this.userService
-      .getLearntWordIds(this.selectedLevel.title)
-      .subscribe(
-        ids => (this.learntWordIds = ids),
-        error => console.error('Error fetching learntWordIds', error)
-      );
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('selectedLevel' in changes) {
       this.wordsService
         .getWordsByLevel(this.selectedLevel.title)
         .subscribe(words => {
-          this.words = words.filter(
-            (word: Word) => !(word.id in this.learntWordIds)
-          );
-          this.currentWord = this.words.shift();
+          this.words = words;
+          this.filterWords();
         });
     }
   }
 
+  filterWords() {
+    this.userService
+      .getLearntWordIds(this.selectedLevel.title)
+      .subscribe(ids => {
+        this.words = this.words.filter((word: Word) => ids.includes(word.id));
+        this.currentWord = this.words.shift();
+      });
+  }
+
   onAnswerSelected(selectedAnswer: WordResult): void {
     if (selectedAnswer.knew) {
-      this.learntWords.push(selectedAnswer.word);
+      this.userService.learntNewWord(selectedAnswer.word, this.selectedLevel.title);
     } else {
       this.words.push(selectedAnswer.word);
     }

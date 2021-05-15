@@ -18,7 +18,7 @@ export class UserService {
 
   learntNewWord(word: Word, level: String): void {
     // for logged in user append learnt words in user+level
-    console.log('Saved word id in level');
+    console.log('Saved word id in level', word, level);
   }
 
   getLearntWordIds(level: string): Observable<number[]> {
