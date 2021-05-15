@@ -1,1 +1,7 @@
 <app-word-card [word]="currentWord" (answer)="onAnswerSelected($event)"></app-word-card>
+
+<div class="progress">
+  <b>Remaining words: </b> {{ words.length + 1 }}
+  <br/>
+  <b>Words learnt so far: </b> {{ learntWords.length }}
+</div>

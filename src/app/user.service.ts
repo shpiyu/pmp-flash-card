@@ -1,0 +1,28 @@
+import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
+import { Progress } from './progress/progress';
+import { Word } from './word-card/word';
+
+@Injectable()
+export class UserService {
+  private currentUserId: string;
+
+  constructor() {
+    // todo: get from logged in user
+    this.currentUserId = 'test-user';
+  }
+
+  getCurrentUserId(): string {
+    return this.currentUserId;
+  }
+
+  learntNewWord(word: Word, level: String): void {
+    // for logged in user append learnt words in user+level
+    console.log('Saved word id in level');
+  }
+
+  getLearntWordIds(level: string): Observable<number[]> {
+    // todo: get from db
+    return from([[1, 2]]);
+  }
+}

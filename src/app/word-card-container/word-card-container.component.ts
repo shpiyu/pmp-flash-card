@@ -7,6 +7,8 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
+import { filter } from 'rxjs/operators';
+import { UserService } from '../user.service';
 import { Word } from '../word-card/word';
 import { WordResult } from '../word-card/word-card.component';
 import { WordLevel } from '../word-levels/word-level';
@@ -19,21 +21,35 @@ import { WordsService } from '../words.service';
 })
 export class WordCardContainerComponent implements OnInit, OnChanges {
   words: Word[] = [];
+  learntWords: Word[] = [];
+  learntWordIds: number[] = [];
   currentWord: Word;
 
   @Input() selectedLevel: WordLevel;
   @Output() levelComplete = new EventEmitter<LevelCompleteEvent>();
 
-  constructor(private wordsService: WordsService) {}
+  constructor(
+    private wordsService: WordsService,
+    private userService: UserService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userService
+      .getLearntWordIds(this.selectedLevel.title)
+      .subscribe(
+        ids => (this.learntWordIds = ids),
+        error => console.error('Error fetching learntWordIds', error)
+      );
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('selectedLevel' in changes) {
       this.wordsService
         .getWordsByLevel(this.selectedLevel.title)
         .subscribe(words => {
-          this.words = words;
+          this.words = words.filter(
+            (word: Word) => !(word.id in this.learntWordIds)
+          );
           this.currentWord = this.words.shift();
         });
     }
@@ -41,7 +57,7 @@ export class WordCardContainerComponent implements OnInit, OnChanges {
 
   onAnswerSelected(selectedAnswer: WordResult): void {
     if (selectedAnswer.knew) {
-      // do something if user knew the word
+      this.learntWords.push(selectedAnswer.word);
     } else {
       this.words.push(selectedAnswer.word);
     }

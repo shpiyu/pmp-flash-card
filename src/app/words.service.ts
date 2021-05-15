@@ -22,15 +22,18 @@ export class WordsService {
 
   private sampleWords: Word[] = [
     {
+      id: 1,
       title: 'Project Management',
       description: 'Project Management is a study of managing projects'
     },
     {
+      id: 2,
       title: 'Agile',
       description:
         'Agile is a super cool way working on a project and in a team'
     },
     {
+      id: 3,
       title: 'Deadline',
       description: "If you cross this line you're dead"
     }
@@ -38,10 +41,12 @@ export class WordsService {
 
   private mediumWords: Word[] = [
     {
+      id: 4,
       title: 'Piyush',
       description: 'meaning of Piyush'
     },
     {
+      id: 5,
       title: 'Ranjan',
       description: 'meaning of ranjan'
     }
@@ -49,10 +54,12 @@ export class WordsService {
 
   private hardWords: Word[] = [
     {
+      id: 6,
       title: 'Raja',
       description: 'meaning of raja'
     },
     {
+      id: 7,
       title: 'Baja',
       description: 'meaning of baja'
     }

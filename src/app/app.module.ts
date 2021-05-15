@@ -11,6 +11,7 @@ import { WordCardComponent } from './word-card/word-card.component';
 import { WordCardContainerComponent } from './word-card-container/word-card-container.component';
 import { WordLevelsComponent } from './word-levels/word-levels.component';
 import { WordsService } from './words.service';
+import { UserService } from './user.service';
 
 @NgModule({
   imports: [
@@ -28,6 +29,6 @@ import { WordsService } from './words.service';
     WordLevelsComponent
   ],
   bootstrap: [AppComponent],
-  providers: [WordsService]
+  providers: [WordsService, UserService]
 })
 export class AppModule {}
