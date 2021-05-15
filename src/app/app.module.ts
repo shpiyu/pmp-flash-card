@@ -12,6 +12,7 @@ import { WordCardContainerComponent } from './word-card-container/word-card-cont
 import { WordLevelsComponent } from './word-levels/word-levels.component';
 import { WordsService } from './words.service';
 import { UserService } from './user.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { UserService } from './user.service';
     HelloComponent,
     WordCardComponent,
     WordCardContainerComponent,
-    WordLevelsComponent
+    WordLevelsComponent,
+    LoginComponent
   ],
   bootstrap: [AppComponent],
   providers: [WordsService, UserService]
