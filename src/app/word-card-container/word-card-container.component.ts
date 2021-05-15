@@ -7,7 +7,6 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import { filter } from 'rxjs/operators';
 import { UserService } from '../user.service';
 import { Word } from '../word-card/word';
 import { WordResult } from '../word-card/word-card.component';
@@ -37,13 +36,12 @@ export class WordCardContainerComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if ('selectedLevel' in changes) {
       // reset learntWordIds
-      this.learntWordIds = []; 
+      this.learntWordIds = [];
       // fetch new words for this level
       this.wordsService
         .getWordsByLevel(this.selectedLevel.title)
         .subscribe(words => {
           this.words = words;
-          console.log('fetched words', this.words);
           this.filterWords();
         });
     }
@@ -56,7 +54,6 @@ export class WordCardContainerComponent implements OnInit, OnChanges {
         this.learntWordIds = ids;
         this.words = this.words.filter((word: Word) => !ids.includes(word.id));
         this.currentWord = this.words.shift();
-        console.log(this.learntWordIds);
       });
   }
 
