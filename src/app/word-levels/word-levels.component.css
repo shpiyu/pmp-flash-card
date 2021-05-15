@@ -1,0 +1,8 @@
+.word-level-card {
+  margin: 14px;
+  max-width: 800px;
+}
+
+.word-level-card h2 {
+  text-transform: capitalize;
+}
