@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Word } from '../word-card/word';
+import { WordResult } from '../word-card/word-card.component';
 
 @Component({
   selector: 'app-word-card-container',
@@ -24,22 +25,28 @@ export class WordCardContainerComponent implements OnInit {
   ];
   currentWord: Word = this.words.shift();
 
+  @Output() levelComplete = new EventEmitter<LevelCompleteEvent>();
+
   constructor() {}
 
   ngOnInit() {}
 
-  onAnswerSelected(selectedAnswer: boolean): void {
+  onAnswerSelected(selectedAnswer: WordResult): void {
     console.log(this.words);
-    if (selectedAnswer) {
+    if (selectedAnswer.knew) {
       // do something if user knew the word
     } else {
-      // do something if user didn't know the word
+      this.words.push(selectedAnswer.word);
     }
 
     if (this.words.length != 0) {
       this.currentWord = this.words.shift();
     } else {
-      console.log('all words are learnt. Go to next level');
+      this.levelComplete.emit({ data: true });
     }
   }
+}
+
+export interface LevelCompleteEvent {
+  data: boolean;
 }

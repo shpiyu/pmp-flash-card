@@ -4,6 +4,11 @@
 
 <div class="container-wrapper">
   <div class="container">
-    <app-word-card-container></app-word-card-container>
+    <app-word-card-container *ngIf="!levelComplete" (levelComplete)="onLevelComplete($event)"></app-word-card-container>
+
+    <div class="congrats">
+      <h1>Congratulations</h1>
+      <p> You have learnt all the words in this level.<p>
+    </div>
   </div>
 </div>

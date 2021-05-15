@@ -17,7 +17,7 @@ import { Word } from './word';
 })
 export class WordCardComponent implements OnInit, OnChanges {
   @Input() word: Word;
-  @Output() answer = new EventEmitter<boolean>();
+  @Output() answer = new EventEmitter<WordResult>();
 
   showMeaning = false;
   constructor() {}
@@ -37,6 +37,11 @@ export class WordCardComponent implements OnInit, OnChanges {
   }
 
   onWordAction(selectedAnswer: boolean): void {
-    this.answer.emit(selectedAnswer);
+    this.answer.emit({word: this.word, knew: selectedAnswer});
   }
+}
+
+export interface WordResult {
+  word: Word;
+  knew: boolean;
 }
