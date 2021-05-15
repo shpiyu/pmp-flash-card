@@ -7,7 +7,7 @@
 
     <app-word-levels *ngIf="!selectedLevel" (selectLevel)="onLevelSelect($event)"></app-word-levels>
 
-    <app-word-card-container *ngIf="!levelComplete && selectedLevel" (levelComplete)="onLevelComplete($event)">
+    <app-word-card-container *ngIf="!levelComplete && selectedLevel" (levelComplete)="onLevelComplete($event)" [selectedLevel]="selectedLevel">
     </app-word-card-container>
 
     <div *ngIf="levelComplete" class="congrats">

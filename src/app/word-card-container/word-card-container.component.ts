@@ -1,13 +1,22 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { Word } from '../word-card/word';
 import { WordResult } from '../word-card/word-card.component';
+import { WordLevel } from '../word-levels/word-level';
 
 @Component({
   selector: 'app-word-card-container',
   templateUrl: './word-card-container.component.html',
   styleUrls: ['./word-card-container.component.css']
 })
-export class WordCardContainerComponent implements OnInit {
+export class WordCardContainerComponent implements OnInit, OnChanges {
   words: Word[] = [
     {
       title: 'Project Management',
@@ -25,11 +34,18 @@ export class WordCardContainerComponent implements OnInit {
   ];
   currentWord: Word = this.words.shift();
 
+  @Input() selectedLevel: WordLevel;
   @Output() levelComplete = new EventEmitter<LevelCompleteEvent>();
 
   constructor() {}
 
   ngOnInit() {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('selectedLevel' in changes) {
+      console.log('Selected level is ', this.selectedLevel);
+    }
+  }
 
   onAnswerSelected(selectedAnswer: WordResult): void {
     console.log(this.words);
