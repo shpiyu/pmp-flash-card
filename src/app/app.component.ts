@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { Word } from './word-card/word';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component, VERSION } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // name = 'Angular ' + VERSION.major;
+  word: Word = {
+    title: 'Project Management',
+    description: 'Project Management is a study of managing projects'
+  };
 }

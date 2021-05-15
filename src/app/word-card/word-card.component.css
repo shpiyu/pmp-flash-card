@@ -1,0 +1,26 @@
+.word-card {
+  /* height: 250px; */
+  margin: 14px;
+  text-align: center;
+}
+
+mat-card-content {
+  align-items: center;
+}
+
+.word-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.word-container h2 {
+  font-size: 2em;
+}
+
+.word-container p {
+  font-size: 1.5em;
+  text-align: center;
+}
