@@ -21,8 +21,7 @@ import { WordsService } from '../words.service';
 })
 export class WordCardContainerComponent implements OnInit, OnChanges {
   words: Word[] = [];
-  learntWords: Word[] = [];
-  learntWordIds: number[] = [];
+  learntWordIds: number[];
   currentWord: Word;
 
   @Input() selectedLevel: WordLevel;
@@ -37,10 +36,14 @@ export class WordCardContainerComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if ('selectedLevel' in changes) {
+      // reset learntWordIds
+      this.learntWordIds = []; 
+      // fetch new words for this level
       this.wordsService
         .getWordsByLevel(this.selectedLevel.title)
         .subscribe(words => {
           this.words = words;
+          console.log('fetched words', this.words);
           this.filterWords();
         });
     }
@@ -50,14 +53,20 @@ export class WordCardContainerComponent implements OnInit, OnChanges {
     this.userService
       .getLearntWordIds(this.selectedLevel.title)
       .subscribe(ids => {
-        this.words = this.words.filter((word: Word) => ids.includes(word.id));
+        this.learntWordIds = ids;
+        this.words = this.words.filter((word: Word) => !ids.includes(word.id));
         this.currentWord = this.words.shift();
+        console.log(this.learntWordIds);
       });
   }
 
   onAnswerSelected(selectedAnswer: WordResult): void {
     if (selectedAnswer.knew) {
-      this.userService.learntNewWord(selectedAnswer.word, this.selectedLevel.title);
+      this.userService.learntNewWord(
+        selectedAnswer.word,
+        this.selectedLevel.title
+      );
+      this.learntWordIds.push(selectedAnswer.word.id);
     } else {
       this.words.push(selectedAnswer.word);
     }

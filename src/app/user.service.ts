@@ -23,6 +23,13 @@ export class UserService {
 
   getLearntWordIds(level: string): Observable<number[]> {
     // todo: get from db
-    return from([[1, 2]]);
+    switch (level) {
+      case 'easy':
+        return from([[1, 2]]);
+      case 'medium':
+        return from([[4]]);
+      case 'hard':
+        return from([[]]);
+    }
   }
 }
