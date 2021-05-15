@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { WordCardComponent } from './word-card/word-card.component';
+import { WordCardContainerComponent } from './word-card-container/word-card-container.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { WordCardComponent } from './word-card/word-card.component';
     MatCardModule,
     MatButtonModule
   ],
-  declarations: [AppComponent, HelloComponent, WordCardComponent],
+  declarations: [AppComponent, HelloComponent, WordCardComponent, WordCardContainerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

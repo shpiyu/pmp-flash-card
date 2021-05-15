@@ -7,8 +7,5 @@ import { Word } from './word-card/word';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  word: Word = {
-    title: 'Project Management',
-    description: 'Project Management is a study of managing projects'
-  };
+  
 }

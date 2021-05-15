@@ -24,3 +24,11 @@ mat-card-content {
   font-size: 1.5em;
   text-align: center;
 }
+
+mat-card-actions {
+  display: flex;
+}
+
+mat-card-actions button {
+  width: 100%;
+}
