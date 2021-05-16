@@ -2,6 +2,7 @@
   /* height: 250px; */
   margin: 14px;
   text-align: center;
+  background-color: rgb(231, 231, 231);
 }
 
 mat-card-content {

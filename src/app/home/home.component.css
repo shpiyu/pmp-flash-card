@@ -1,3 +1,6 @@
+.home {
+  background-color: white;
+}
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -5,12 +8,24 @@
 
 .main-container .container {
   padding-top: 100px;
-  margin: 12px;
+  margin: 0 12px;
 }
 
 .main-container h1 {
   font-size: 3em;
-  text-align: center;
+  /* text-align: center; */
+}
+
+.main-btn {
+  background-color: black;
+  color: white;
+  flex-flow: left;
+  max-width: 200px;
+  margin: 24px 0;
+}
+
+.main-btn:hover {
+  background-color: rgb(70, 70, 70);
 }
 .secondary-banner {
   background-color: black;
@@ -43,14 +58,14 @@
 .banner {
   display: flex;
   flex-direction: row;
-  margin: 14px;
+  margin: 0 14px;
 }
 
 .banner-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .banner-text h1 {
@@ -74,6 +89,9 @@
   .banner-img {
     height: 350px;
     text-align: center;
+  }
+  .banner-text h1 {
+    font-size: 3em;
   }
 
   .secondary-banner .main-container .info {
