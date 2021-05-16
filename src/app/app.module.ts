@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -20,7 +21,9 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
