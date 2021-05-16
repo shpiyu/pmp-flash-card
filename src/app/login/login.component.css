@@ -12,7 +12,20 @@
 mat-card-title,
 mat-card-content {
   display: flex;
-  justify-content: center;
+}
+mat-card-title {
+  padding-bottom: 12px;
+}
+mat-card-subtitle {
+  padding-bottom: 24px;
+}
+mat-card-subtitle span {
+  color: black;
+  cursor: pointer;
+}
+
+mat-card-subtitle span:hover {
+  text-decoration: underline;
 }
 
 .error {
@@ -24,5 +37,16 @@ mat-card-content {
 
 .button {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
+}
+
+.button button {
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+}
+
+.button button:hover {
+  background-color: rgb(70, 70, 70);
 }

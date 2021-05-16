@@ -1,10 +1,13 @@
 <mat-card>
-  <mat-card-title>Login</mat-card-title>
+  <mat-card-title>{{ formText.title }}</mat-card-title>
+  <mat-card-subtitle>
+    {{ formText.subtitle }} <span (click)="onActionClick()">{{ formText.subtitleAction }}</span>
+  </mat-card-subtitle>
   <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field>
-          <input type="text" matInput placeholder="Username" formControlName="username">
+          <input type="text" matInput placeholder="Email" formControlName="email">
         </mat-form-field>
       </p>
 
@@ -19,7 +22,7 @@
       </p>
 
       <div class="button">
-        <button type="submit" mat-button>Login</button>
+        <button type="submit" mat-button>{{ formText.submitText }}</button>
       </div>
 
     </form>

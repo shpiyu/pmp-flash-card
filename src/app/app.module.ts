@@ -14,6 +14,8 @@ import { WordLevelsComponent } from './word-levels/word-levels.component';
 import { WordsService } from './words.service';
 import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,

@@ -8,18 +8,63 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl('')
   });
 
+  action: string = 'login';
+  loginTitle = 'Login';
+  loginSubtitle = "Don't have an account?";
+  loginSubtitleAction = 'Register now';
+  loginSubmitText = 'Login';
+
+  signupTitle = 'Register';
+  signupSubtitle = 'Already have an account?';
+  signupSubtitleAction = 'Login now';
+  signupSubmitText = 'Register';
+
+  formText = {
+    title: this.loginTitle,
+    subtitle: this.loginSubtitle,
+    subtitleAction: this.loginSubtitleAction,
+    submitText: this.loginSubmitText
+  };
+
   @Input() error: string | null;
-  @Output() submitEM = new EventEmitter();
+  @Output() submitEM = new EventEmitter<LoginDetail>();
 
   ngOnInit(): void {}
 
-  submit() {
+  onSubmit() {
     if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
+      this.submitEM.emit({ action: this.action, ...this.form.value });
     }
   }
+
+  onActionClick() {
+    console.log('clicked');
+    if (this.action == 'login') {
+      this.action = 'signup';
+      this.formText = {
+        title: this.signupTitle,
+        subtitle: this.signupSubtitle,
+        subtitleAction: this.signupSubtitleAction,
+        submitText: this.signupSubmitText
+      };
+    } else {
+      this.action = 'login';
+      this.formText = {
+        title: this.loginTitle,
+        subtitle: this.loginSubtitle,
+        subtitleAction: this.loginSubtitleAction,
+        submitText: this.loginSubmitText
+      };
+    }
+  }
+}
+
+export interface LoginDetail {
+  action: string;
+  email: string;
+  password: string;
 }

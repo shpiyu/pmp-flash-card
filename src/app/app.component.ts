@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { LoginDetail } from './login/login.component';
 import { LevelCompleteEvent } from './word-card-container/word-card-container.component';
 import { WordLevel } from './word-levels/word-level';
 
@@ -22,5 +23,10 @@ export class AppComponent {
   resetLevel(): void {
     this.selectedLevel = null;
     this.levelComplete = false;
+  }
+
+  onLoginSubmit(loginDetail: LoginDetail): void {
+    console.log('main', loginDetail);
+    console.log(typeof loginDetail);
   }
 }
