@@ -1,0 +1,17 @@
+<div class="container-wrapper">
+  <div class="container">
+
+    <app-word-levels *ngIf="!selectedLevel" (selectLevel)="onLevelSelect($event)"></app-word-levels>
+
+    <app-word-card-container *ngIf="!levelComplete && selectedLevel" (levelComplete)="onLevelComplete($event)"
+      [selectedLevel]="selectedLevel">
+    </app-word-card-container>
+
+    <div *ngIf="levelComplete" class="congrats">
+      <h1>Congratulations</h1>
+      <p> You have learnt all the words in this level. <span class="home-nav" (click)="resetLevel()">Click here </span>
+        to go to the home page.
+      <p>
+    </div>
+  </div>
+</div>

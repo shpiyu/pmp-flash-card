@@ -1,0 +1,30 @@
+p {
+  font-family: Lato;
+}
+
+.container-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.congrats {
+  margin: 14px;
+  text-align: center;
+}
+
+.congrats h1 {
+  font-family: 'Oleo Script', cursive;
+  transform: rotate(-4deg);
+  font-size: 2.5em;
+  padding: 14px;
+  color: 'primary';
+}
+
+.congrats p {
+  font-size: 1.2em;
+}
+
+.congrats .home-nav {
+  font-weight: bold;
+  text-decoration: underline;
+}

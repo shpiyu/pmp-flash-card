@@ -1,0 +1,98 @@
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-container .container {
+  padding-top: 100px;
+  margin: 12px;
+}
+
+.main-container h1 {
+  font-size: 3em;
+  text-align: center;
+}
+.secondary-banner {
+  background-color: black;
+  padding: 24px;
+  color: white;
+}
+
+.secondary-banner .main-container {
+  padding: 30px 0;
+}
+
+.secondary-banner .main-container .info {
+  display: flex;
+  flex-direction: row;
+}
+
+.secondary-banner .main-container .info h2 {
+  width: 100%;
+}
+
+.secondary-banner .main-container .info h2:last-child {
+  text-align: right;
+}
+
+.secondary-banner .main-container .info h2:nth-child(even) {
+  text-align: center;
+}
+
+/* banner */
+.banner {
+  display: flex;
+  flex-direction: row;
+  margin: 14px;
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-text h1 {
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.banner-text h1 span {
+  font-size: 0.5em;
+}
+
+.banner-text p {
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 450px) {
+  .banner {
+    flex-direction: column;
+  }
+  .banner-img {
+    height: 350px;
+    text-align: center;
+  }
+
+  .secondary-banner .main-container .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .secondary-banner .main-container .info h2:nth-child(odd) {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 451px) {
+  .banner {
+    flex-direction: row;
+  }
+  .banner-img {
+    height: 400px;
+  }
+}
+/* banenr end */

@@ -16,10 +16,14 @@ import { UserService } from './user.service';
 import { LoginComponent } from './login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FlashCardComponent } from './flash-card/flash-card.component';
 
 @NgModule({
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     MatToolbarModule,
     MatCardModule,
@@ -35,7 +39,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     WordCardComponent,
     WordCardContainerComponent,
     WordLevelsComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    FlashCardComponent
   ],
   bootstrap: [AppComponent],
   providers: [WordsService, UserService]
